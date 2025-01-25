@@ -1,4 +1,4 @@
-export const USER_API_END_POINT = "https://twitter-back-3gpp.onrender.com/api/v1/user";
+export const USER_API_END_POINT = "https://twitter-back-evfw.onrender.com/api/v1/user";
 export const TWEET_API_END_POINT = "https://twitter-back-evfw.onrender.com/api/v1/tweet";
 
 export const timeSince = (timestamp) => {
