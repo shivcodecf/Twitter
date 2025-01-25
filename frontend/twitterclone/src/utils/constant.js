@@ -1,5 +1,5 @@
-export const USER_API_END_POINT = "https://twitter-back-evfw.onrender.com/api/v1/user";
-export const TWEET_API_END_POINT = "https://twitter-back-evfw.onrender.com/api/v1/tweet";
+export const USER_API_END_POINT = "https://twitter-back1.onrender.com/api/v1/user";
+export const TWEET_API_END_POINT = "https://twitter-back1.onrender.com/api/v1/tweet";
 
 export const timeSince = (timestamp) => {
     if (!timestamp) return "Invalid date"; // Handle missing timestamp
