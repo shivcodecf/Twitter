@@ -1,11 +1,16 @@
-export const USER_API_END_POINT = "http://localhost:8080/api/v1/user";
-export const TWEET_API_END_POINT = "http://localhost:8080/api/v1/tweet";
+export const USER_API_END_POINT = "http://localhost:5000/api/v1/user";
+export const TWEET_API_END_POINT = "http://localhost:5000/api/v1/tweet";
 
 export const timeSince = (timestamp) => {
+    if (!timestamp) return "Invalid date"; // Handle missing timestamp
+
     let time = Date.parse(timestamp);
+    if (isNaN(time)) return "Invalid date"; // Handle invalid timestamp
+
     let now = Date.now();
     let secondsPast = (now - time) / 1000;
-    let suffix = 'ago';
+    let suffix = secondsPast < 0 ? "from now" : "ago"; // Determine suffix for future or past time
+    secondsPast = Math.abs(secondsPast); // Convert to absolute for consistent calculations
 
     let intervals = {
         year: 31536000,
@@ -14,14 +19,15 @@ export const timeSince = (timestamp) => {
         day: 86400,
         hour: 3600,
         minute: 60,
-        second: 1
+        second: 1,
     };
 
     for (let i in intervals) {
         let interval = intervals[i];
         if (secondsPast >= interval) {
             let count = Math.floor(secondsPast / interval);
-            return `${count} ${i} ${count > 1 ? 's' : ''} ${suffix}`;
+            return `${count} ${i}${count > 1 ? "s" : ""} ${suffix}`;
         }
     }
-}
+    return "Just now"; // Fallback for timestamps very close to the current time
+};
